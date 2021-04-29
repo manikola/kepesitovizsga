@@ -10,14 +10,12 @@ import java.util.Set;
 public class Phonebook {
 
     public void exportPhonebook(Map<String, String> contacts, String output){
-        if( contacts == null){
+
+        if( contacts == null || output == null || output.equals("")){
             throw new IllegalArgumentException("Empty contacts");
         }
-        if(output == null){
-            throw new IllegalArgumentException("Empty output");
-        }
-        Path path = Path.of(output);
 
+        Path path = Path.of(output);
 
         try (BufferedWriter writer = Files.newBufferedWriter(path)) {
             for (String name : contacts.keySet()) {
